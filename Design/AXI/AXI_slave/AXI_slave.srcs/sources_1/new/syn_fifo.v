@@ -35,16 +35,16 @@ module syn_fifo#(parameter SIZE=32,
     
     reg [SIZE-1:0] mem[0:DEPTH-1];
       
-//***** pointer to enter the data into fifo*****
+//  pointer to enter the data into fifo
     reg [$clog2(DEPTH)-1:0] rd_ptr;
     reg [$clog2(DEPTH)-1:0] wr_ptr;
     
     
-//*****checking the condition for fifo full and empty*****
-assign fifo_full  = ((wr_ptr+1'b1) == rd_ptr);
-assign fifo_empty = (wr_ptr == rd_ptr);
+//  checking the condition for fifo full and empty
+    assign fifo_full  = ((wr_ptr+1'b1) == rd_ptr);
+    assign fifo_empty = (wr_ptr == rd_ptr);
 
-//*****For Writing data into fifo*****
+// For Writing data into fifo
 always@(posedge clk,negedge reset)
 begin
    if(!reset)begin
@@ -59,7 +59,7 @@ begin
  end 
 
  
-//*****For Reading data from fifo*****
+//For Reading data from fifo
 always@(posedge clk,negedge reset)
 begin
    if(!reset) begin
