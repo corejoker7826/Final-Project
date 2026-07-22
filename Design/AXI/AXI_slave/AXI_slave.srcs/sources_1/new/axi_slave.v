@@ -53,14 +53,16 @@ module axi_slave #(parameter ADDR_WIDTH=32,
      output reg [DATA_WIDTH-1:0] s_axil_rdata,
      output reg    [1:0]         s_axil_rresp,
      output reg                  s_axil_rvalid,
-     input  wire                 s_axil_rready  
+     input  wire                 s_axil_rready,  
  
- 
- 
- 
- 
+ // FIFO INTERFACES
+     output reg                  wr_fifo_wr_en,
+     output reg [DATA_WIDTH-1:0] wr_fifo_din,
+     input  wire                 wr_fifo_full,
      
-    
+     output reg                  rd_fifo_rd_en,
+     output reg [DATA_WIDTH-1:0] rd_fifo_dout,
+     input  wire                 rd_fifo_full
 
     );
 endmodule

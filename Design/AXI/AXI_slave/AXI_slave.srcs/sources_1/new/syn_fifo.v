@@ -59,7 +59,7 @@ begin
  end 
 
  
-//For Reading data from fifo
+// For Reading data from fifo
 always@(posedge clk,negedge reset)
 begin
    if(!reset) begin
