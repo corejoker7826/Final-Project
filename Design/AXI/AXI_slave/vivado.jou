@@ -1,0 +1,29 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sat Jul 25 18:54:48 2026
+# Process ID         : 12668
+# Current directory  : D:/Project/Final-Project/Design/AXI/AXI_slave
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent36208 D:\Project\Final-Project\Design\AXI\AXI_slave\AXI_slave.xpr
+# Log file           : D:/Project/Final-Project/Design/AXI/AXI_slave/vivado.log
+# Journal file       : D:/Project/Final-Project/Design/AXI/AXI_slave\vivado.jou
+# Running On         : Vinayak_Hasure
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-12650H
+# CPU Frequency      : 2688 MHz
+# CPU Physical cores : 10
+# CPU Logical cores  : 16
+# Host memory        : 16802 MB
+# Swap memory        : 11274 MB
+# Total Virtual      : 28077 MB
+# Available Virtual  : 7044 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/Final-Project/Design/AXI/AXI_slave/AXI_slave.xpr
+update_compile_order -fileset sources_1
+close [ open D:/Project/Final-Project/Design/AXI/AXI_slave/AXI_slave.srcs/sources_1/new/address_decoder.v w ]
+add_files D:/Project/Final-Project/Design/AXI/AXI_slave/AXI_slave.srcs/sources_1/new/address_decoder.v
+update_compile_order -fileset sources_1

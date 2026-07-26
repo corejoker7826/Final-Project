@@ -39,8 +39,8 @@ module axi_slave #(parameter ADDR_WIDTH=32,
     output reg                   s_axi_wready,
      
  //WRITE RESPONSE CHANNEL
-    output wire [1:0]           s_axi_bresp,
-    output wire                 s_axi_bvalid,
+    output reg [1:0]            s_axi_bresp,
+    output reg                  s_axi_bvalid,
      input wire                 s_axi_bready,
  
  //READ ADDRESS CHANNEL
@@ -53,16 +53,53 @@ module axi_slave #(parameter ADDR_WIDTH=32,
      output reg [DATA_WIDTH-1:0] s_axil_rdata,
      output reg    [1:0]         s_axil_rresp,
      output reg                  s_axil_rvalid,
-     input  wire                 s_axil_rready,  
- 
- // FIFO INTERFACES
-     output reg                  wr_fifo_wr_en,
-     output reg [DATA_WIDTH-1:0] wr_fifo_din,
-     input  wire                 wr_fifo_full,
-     
-     output reg                  rd_fifo_rd_en,
-     output reg [DATA_WIDTH-1:0] rd_fifo_dout,
-     input  wire                 rd_fifo_full
+     input  wire                 s_axil_rready 
 
     );
+
+
+// ADDRESS REGISTER
+   reg [ADDR_WIDTH-1:0] awaddr_reg;
+   reg [ADDR_WIDTH-1:0] araddr_reg;
+   
+// DATA REGISTER
+   reg [DATA_WIDTH-1:0] wdata_reg;
+   reg [DATA_WIDTH-1:0] rdata_reg;
+   
+// CONTROL SIGNLAS
+   reg                  write_req;
+   reg                  read_req;
+ 
+ //FSM STATE FOR WRITE
+   localparam W_IDEL = 2'b00;
+   localparam W_DATA = 2'b01;
+   localparam W_RESP = 2'b10;
+   localparam W_DONE = 2'b11;
+
+// FSM STATE FOR READ
+   localparam RD_IDEL = 2'b00;
+   localparam RD_DATA = 2'b01;
+   localparam RD_RESP = 2'b10;
+
+   reg [1:0] w_state;
+   reg [1:0] r_state;
+
+always@(posedge aclk or posedge areset)
+begin
+  if(!areset) begin
+     w_state       <= W_IDEL;
+     s_axi_awready <= 1'b0;
+     s_axi_wready  <= 1'b0;
+     s_axi_bresp   <= 2'b00;
+     s_axi_bvalid  <= 1'b0;
+     
+     //INTERNAL REGISTER
+     awaddr_reg    <= 32'b0;
+     araddr_reg    <= 32'b0;
+     wdata_reg     <= 32'b0;
+     
+   end
+     
+       
+end
 endmodule
