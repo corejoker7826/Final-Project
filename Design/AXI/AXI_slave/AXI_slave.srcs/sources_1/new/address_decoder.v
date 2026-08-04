@@ -18,12 +18,12 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-module address_decoder#(parameter AXI_ADDR=32,
-                        parameter SRAM_ADDR=8
+module address_decoder#(parameter AXI_ADDR_WIDTH  =32,
+                        parameter SRAM_ADDR_WIDTH =8
                         )(
-         input wire [AXI_ADDR-1:0]  axi_addr,
-        output wire [SRAM_ADDR-1:0] sram_addr,
-        output wire                 addr_valid
+         input wire [AXI_ADDR_WIDTH-1:0]  axi_addr,
+        output wire [SRAM_ADDR_WIDTH-1:0] sram_addr,
+        output wire                       addr_valid
          );
    
    assign sram_addr = axi_addr[9:2];
